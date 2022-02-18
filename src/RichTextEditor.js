@@ -7,7 +7,7 @@ const RichTextEditor = (props) => {
     const [data, setData] = useState({editorState: EditorState.createEmpty(), flag: false})
     useEffect(()=>{
         if(props.data){
-            setDataValues(props.data.htmlString)
+            setDataValues(props.data.htmlString) // get from props the html string you need to display on the text editor
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[props.data])
@@ -17,7 +17,7 @@ const RichTextEditor = (props) => {
         setData({editorState: EditorState.createWithContent(contentState), flag: !data.flag})
     }
     const gatherData = (htmlString) => {
-        props.data.updateData(htmlString)
+        props.data.updateData(htmlString) // grab this in a useRef on father component to use the html string in a DB or something else
     }
     return(
         <DraftJS values={data} retriever={gatherData}/>
